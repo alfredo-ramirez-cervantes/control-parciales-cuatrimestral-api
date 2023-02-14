@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://gitlab.funcionpublica.gob.mx/dgti/ees/sisdo-api.git"
+    "url": "https://github.com/alfredo-ramirez-cervantes/control-parciales-cuatrimestral-api.git"
   },
   "author": "José Alfredo Ramirez Cervantes",
   "license": "MIT",
