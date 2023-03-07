@@ -206,7 +206,7 @@ const query = new GraphQLObjectType({
         },
 
         //QUITAR
-        CatListaActividadesByPonderador: {
+       /* CatListaActividadesByPonderador: {
             type: new GraphQLList(new GraphQLNonNull(CatActividadPonderadorType)),
             args: {      
                 id_profesor:    { type: GraphQLInt },    
@@ -248,7 +248,7 @@ const query = new GraphQLObjectType({
                 .then(res => res)
                 .catch(err => err);
             }
-        },
+        },*/
 
         CatListaActividadesAlumnosByPonderador: {
             type: new GraphQLList(new GraphQLNonNull(CatActividadAlumnoByPonderadorType)),
