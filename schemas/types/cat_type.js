@@ -114,6 +114,22 @@ const CatPonderadorType = new GraphQLObjectType({
     }
 });
 
+
+const UsuarioType = new GraphQLObjectType({
+    name: "UsuarioType",
+    type: "Query",
+    fields: {
+        id:                 { type: GraphQLInt },
+        id_profesor:        { type: GraphQLInt },
+        id_perfil:          { type: GraphQLInt },
+        perfil:             { type: GraphQLString },
+        profesor:           { type: GraphQLString },
+        id_puesto:          { type: GraphQLInt },
+        puesto:             { type: GraphQLString }
+    }
+});
+	
+
 exports.CatMateriaType              = CatMateriaType;
 exports.CatGrupoType                = CatGrupoType;
 exports.CatParcialesType            = CatParcialesType;
@@ -123,3 +139,4 @@ exports.CatAsistenciaType           = CatAsistenciaType;
 exports.CatActividadPonderadorType  = CatActividadPonderadorType;
 exports.CatActividadAlumnoByPonderadorType = CatActividadAlumnoByPonderadorType;
 exports.CatPonderadorType           = CatPonderadorType;
+exports.UsuarioType                 = UsuarioType;

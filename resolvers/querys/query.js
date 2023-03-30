@@ -18,7 +18,8 @@ const {
         CatAsistenciaType,
         CatActividadPonderadorType,
         CatActividadAlumnoByPonderadorType,
-        CatPonderadorType 
+        CatPonderadorType , 
+        UsuarioType 
     } = require("../../schemas/types/cat_type");
 
 const { 
@@ -333,6 +334,40 @@ const query = new GraphQLObjectType({
                 .catch(err => err);
             }
         },
+
+        
+        UsuarioExiste: {
+            type: new GraphQLList(new GraphQLNonNull(UsuarioType)),
+            args: {      
+                usuario:    { type: GraphQLString },    
+                password:   { type: GraphQLString },            
+            },
+            resolve(parentValue, args) {
+                const querys = `
+                select cu.id, cu.id_profesor , cu.id_perfil, 
+                    cp.descripcion as perfil,
+                    cp2.nombre as profesor,
+                    cp2.id_puesto,
+                    cp4.descripcion as puesto
+                from "CORE_USUARIO" cu 
+                inner join "CAT_PERFIL" cp on cu.id_perfil = cp.id 
+                inner join "CAT_PROFESOR" cp2 on cu.id_profesor =cp2.matricula 
+                inner join "CAT_PUESTO" cp4 ON  cp2.id_puesto = cp4.id  
+                where usuario = $1  
+                and contrasenia = $2 `;
+                const values = [ 
+                                    args.usuario, 
+                                    args.password, 
+                                ];
+
+                return db
+                .manyOrNone(querys, values)
+                .then(res => res)
+                .catch(err => err);
+            }
+        },
+
+
 
         
 
