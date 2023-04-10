@@ -75,6 +75,7 @@ const CatAsistenciaType = new GraphQLObjectType({
         dia:                { type: GraphQLInt },
         asistencia:         { type: GraphQLString },
         id_alumno:          { type: GraphQLInt },
+        id_sistencia:       { type: GraphQLInt },
     }
 });
 
@@ -97,6 +98,7 @@ const CatActividadAlumnoByPonderadorType = new GraphQLObjectType({
         id_parcial_periodo: { type: GraphQLInt },
         id_ponderador:      { type: GraphQLInt },
         descripcion:        { type: GraphQLString },
+        id_act_alumno:      { type: GraphQLInt },
         id_alumno:          { type: GraphQLInt },
         calificacion:       { type: GraphQLInt }
     }

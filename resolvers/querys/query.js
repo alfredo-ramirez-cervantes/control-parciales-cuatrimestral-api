@@ -165,7 +165,7 @@ const query = new GraphQLObjectType({
             },
             resolve(parentValue, args) {
                 const querys = `                                
-                                select cdp2.id,cdp2.id_parcial_periodo, cdp2.dia, xx.asistencia, xx.id_alumno 
+                                select cdp2.id,cdp2.id_parcial_periodo, cdp2.dia, xx.asistencia, xx.id_alumno, xx.id as id_sistencia  
                                 from (
                                     SELECT 	cdp.id, cdp.id_parcial_periodo , cdp.dia 
                                     FROM	"CAT_DIAS_PERIODO" cdp  
@@ -177,7 +177,7 @@ const query = new GraphQLObjectType({
                                     ) 
                                 ) as cdp2 
                                 left join (
-                                            select  ca.id_dia, ca.asistencia, ca.id_alumno 
+                                            select  ca.id, ca.id_dia, ca.asistencia, ca.id_alumno 
                                             from 	"CORE_ASISTENCIA" ca 
                                             WHERE 	ca.id_grupo_prof_mat IN(  
                                                         SELECT 	cgpm.id
@@ -266,7 +266,7 @@ const query = new GraphQLObjectType({
             resolve(parentValue, args) {
                 const querys = `select ca2.id, ca2.id_parcial_periodo, 
                                         ca2.id_ponderador,  ca2.descripcion,
-                                        xx.id_alumno, xx.calificacion 
+                                        xx.id as id_act_alumno, xx.id_alumno, xx.calificacion 
                                 from (
                                     SELECT 	ca.id, ca.id_parcial_periodo, ca.id_ponderador, ca.descripcion  
                                     FROM	"CORE_ACTIVIDAD" ca   
